@@ -4,12 +4,12 @@ const httpServer = http.createServer(handleServer);
 
 
 function handleServer(req, res) {
-    if(req.url === "/welcome"){
-        res.writeHead(200,{'content-type':'text/plain'})
+    if(req.url.startsWith("/welcome") && req.method === "GET"){
+        res.writeHead(200,{"content-type":"text/plain"});
         res.write("Welcome to Dominos!");
         
        
-    }else if(req.url === "/contact"){
+    }else if(req.url.startsWith("/contact") && req.method === "GET"){
         res.writeHead(200,{'content-type':'application/json'});
         res.write(JSON.stringify({
             phone: '18602100000',
